@@ -4,10 +4,6 @@ import hmac
 import time
 
 
-# -----------------------------
-# PASSWORD SECURITY
-# -----------------------------
-
 def hash_password(password, salt=None):
     if salt is None:
         salt = secrets.token_hex(16)
@@ -28,9 +24,7 @@ def verify_password(password, salt, stored_hash):
     return hmac.compare_digest(password_hash, stored_hash)
 
 
-# -----------------------------
-# USERS DATABASE
-# -----------------------------
+
 
 users = {}
 
@@ -58,10 +52,6 @@ roles = {
 }
 
 
-# -----------------------------
-# CREATE USER
-# -----------------------------
-
 def create_user(username, password, role):
 
     if role not in roles:
@@ -84,10 +74,6 @@ def create_user(username, password, role):
 
     print(f"User '{username}' created successfully.")
 
-
-# -----------------------------
-# AUTHENTICATION
-# -----------------------------
 
 def login(username, password):
 
@@ -131,9 +117,6 @@ def login(username, password):
     return None
 
 
-# -----------------------------
-# AUTHORIZATION
-# -----------------------------
 
 def check_permission(username, permission):
 
@@ -148,10 +131,6 @@ def check_permission(username, permission):
 
     return False
 
-
-# -----------------------------
-# SECURE RESOURCE
-# -----------------------------
 
 def access_resource(username, permission):
 
@@ -170,9 +149,6 @@ def access_resource(username, permission):
         )
 
 
-# -----------------------------
-# CREATE USERS
-# -----------------------------
 
 create_user(
     "admin",
@@ -197,11 +173,6 @@ create_user(
     "Student@123",
     "Student"
 )
-
-
-# -----------------------------
-# LOGIN
-# -----------------------------
 
 print("\n--- LOGIN ---")
 
